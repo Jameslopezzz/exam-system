@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Results | EXAM SYSTEM </title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/student.css">
+  </head>
+  <body data-role="student">
+    <div class="app">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="student-dashboard.html">Dashboard</a>
+            <a href="student-exam-dashboard.html">My Exams</a>
+            <a href="student-results.html">Results</a>
+            <a href="student-guidelines.html">Guidelines</a>
+          </nav>
+          <div class="user-box">
+            <div>
+              <p class="user-box__name" data-user-name>Althea Castillo</p>
+              <p class="user-box__role">Student</p>
+            </div>
+            <a class="signout" href="index.html">Sign out</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-title">
+          <h1>My Results</h1>
+          <p>Scores released by your professors</p>
+        </div>
+
+        <div class="grid grid--stats grid--three">
+          <div class="stat">
+            <p class="stat__label">Average score</p>
+            <p class="stat__value is-success" id="resAvg">—</p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Assessments taken</p>
+            <p class="stat__value" id="resTaken">0</p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Total violations</p>
+            <p class="stat__value" id="resViol">0</p>
+          </div>
+        </div>
+
+        <section class="card mt-8">
+          <header class="card__header"><h2>Released results</h2></header>
+          <div class="card__body">
+            <div class="scroll-x">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Assessment</th>
+                    <th>Date</th>
+                    <th>Score</th>
+                    <th>Violations</th>
+                    <th>Remark</th>
+                  </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        EXAM SYSTEM · Intelligent Cheat Detection Web-Based Assessment System  · PLMUN
+      </footer>
+    </div>
+
+    <script src="js/api.js"></script>
+    
+    <script src="js/common.js"></script>
+    <script src="js/student.js"></script>
+  </body>
+</html>

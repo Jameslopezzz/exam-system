@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EXAM — Intelligent Cheat Detection Assessment System | PLMun</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="portal">
+      <div class="portal__visual">
+        <div class="portal__overlay"></div>
+      </div>
+
+      <div class="portal__form-side">
+        <div class="login">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+
+          <div id="loginView">
+          <h1>Sign in to access your account</h1>
+          <p class="login__intro">
+            Use your university-issued account.
+          </p>
+
+          <form class="login__form" id="loginForm" autocomplete="off">
+            <div>
+              <label class="label" for="username">Account Number</label>
+              <input class="input" id="username" name="username" autocomplete="username" required />
+            </div>
+            <div>
+              <label class="label" for="password">PIN Number</label>
+              <input class="input" id="password" name="password" type="password" autocomplete="current-password" required />
+            </div>
+            <p class="login__error" id="loginError" role="alert" style="color:var(--destructive);min-height:1.25rem;font-size:.9rem;margin:.5rem 0 0"></p>
+            <button class="btn btn--primary btnSignIn" id="loginBtn" type="submit" style="width:100%;margin-top:.01rem">Sign in</button>
+            <button class="btn btn--primary btnSignIn" id="showSignup" type="submit" style="width:100%;margin-top:.01rem">Sign up</button>
+            <p class="text-xs muted" style="margin-top:.75rem">Your role (student, professor or admin) is detected from your account.</p>
+          </form>
+          <p class="text-xs muted" style="margin-top:.75rem">New student or professor? <a href="#" id="showSignup" class="createAccount">Create an account</a></p>
+          </div>
+          <div id="signupView" hidden>
+            <h1>Create an account</h1>
+            <p class="login__intro">Students and professors can request an account. An administrator must approve it before you can sign in.</p>
+            <form class="login__form" id="signupForm" autocomplete="off">
+              <div>
+                <label class="label" for="suRole">Role</label>
+                <select class="select" id="suRole"><option value="student">Student</option><option value="professor">Professor</option></select>
+              </div>
+              <div>
+                <label class="label" for="suAcct">Account Number</label>
+                <input class="input" id="suAcct" maxlength="30" required />
+              </div>
+              <div>
+                <label class="label" for="suName">Full Name</label>
+                <input class="input" id="suName" maxlength="120" required />
+              </div>
+              <div>
+                <label class="label" for="suDept">Department</label>
+                <select class="select" id="suDept" required></select>
+              </div>
+              <div class="su-student">
+                <label class="label" for="suProg">Course</label>
+                <select class="select" id="suProg"></select>
+              </div>
+              <div class="su-student">
+                <label class="label" for="suYear">Year Level</label>
+                <select class="select" id="suYear"></select>
+              </div>
+              <div class="su-student">
+                <label class="label" for="suSection">Section (optional)</label>
+                <input class="input" id="suSection" maxlength="30" />
+              </div>
+              <div>
+                <label class="label" for="suPass">PIN Number (min 6)</label>
+                <input class="input" id="suPass" type="password" autocomplete="new-password" required />
+              </div>
+              <div>
+                <label class="label" for="suPass2">Confirm PIN</label>
+                <input class="input" id="suPass2" type="password" autocomplete="new-password" required />
+              </div>
+              <p class="login__error" id="signupMsg" role="alert" style="min-height:1.25rem;font-size:.9rem;margin:.5rem 0 0"></p>
+              <button class="btn btn--primary" id="signupBtn" type="submit" style="width:100%;margin-top:.5rem">Submit for approval</button>
+            </form>
+            <p class="text-xs muted" style="margin-top:.75rem">Already have an account? <a href="#" id="showLogin" class="createAccount">Sign in</a></p>
+          </div>
+          
+          <p class="login__footer">Capstone prototype </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

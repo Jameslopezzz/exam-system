@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Professor Dashboard | EXAM SYSTEM</title>
+    <meta name="description" content="Overview of ongoing examinations, flagged students and integrity alerts." />
+    <meta property="og:title" content="Professor Dashboard | EXAM PLMu" />
+    <meta property="og:description" content="Ongoing examinations and integrity alerts at a glance." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/professor.css">
+  </head>
+  <body data-role="professor,admin">
+    <div class="app">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="professor-dashboard.html">Dashboard</a>
+            <a href="professor-monitoring.html">Live Monitoring</a>
+            <a href="professor-exam-creation.html">Exam Builder</a>
+            <a href="professor-reports.html">Reports</a>
+          </nav>
+          <div class="user-box">
+            <div>
+              <p class="user-box__name" data-user-name>Prof. R. Dela Cruz</p>
+              <p class="user-box__role">Professor</p>
+            </div>
+            <a class="signout" href="index.html">Sign out</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-title">
+          <h1>Dashboard</h1>
+          <p id="dashSubtitle">Loading examination…</p>
+        </div>
+
+        <div class="grid grid--stats">
+          <div class="stat">
+            <p class="stat__label">Students taking</p>
+            <p class="stat__value" id="statTaking">0</p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Flagged students</p>
+            <p class="stat__value is-danger" id="statFlagged">0</p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Auto-submitted</p>
+            <p class="stat__value is-danger" id="statAuto">0</p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Completed</p>
+            <p class="stat__value is-success" id="statDone">0</p>
+          </div>
+        </div>
+
+        <div class="grid grid--split">
+          <section class="card">
+            <header class="card__header">
+              <h2>Ongoing session</h2>
+              <a class="card__link" href="professor-monitoring.html">Open live monitoring</a>
+            </header>
+            <div class="card__body">
+              <ul class="divided" id="sessionRoster"></ul>
+            </div>
+          </section>
+
+          <section class="card">
+            <header class="card__header"><h2>Real-time alerts</h2></header>
+            <div class="card__body">
+              <ul id="alertFeed"></ul>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        EXAM SYSTEM · Intelligent Cheat Detection Web-Based Assessment System  · PLMUN
+      </footer>
+    </div>
+
+    <script src="js/api.js"></script>
+    
+    <script src="js/common.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/professor.js"></script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Examination Guidelines | EXAM SYSTEM </title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/student.css">
+  </head>
+  <body data-role="student">
+    <div class="app">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="student-dashboard.html">Dashboard</a>
+            <a href="student-exam-dashboard.html">My Exams</a>
+            <a href="student-results.html">Results</a>
+            <a href="student-guidelines.html">Guidelines</a>
+          </nav>
+          <div class="user-box">
+            <div>
+              <p class="user-box__name" data-user-name>Althea Castillo</p>
+              <p class="user-box__role">Student</p>
+            </div>
+            <a class="signout" href="index.html">Sign out</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-title">
+          <h1>Examination Guidelines</h1>
+          <p>Academic integrity policy for online assessments</p>
+        </div>
+
+        <div class="grid grid--halves">
+          <section class="card">
+            <header class="card__header"><h2>What is monitored</h2></header>
+            <div class="card__body">
+              <ul class="divided text-sm" id="monitoredList"></ul>
+            </div>
+          </section>
+
+          <section class="card">
+            <header class="card__header"><h2>Violation policy</h2></header>
+            <div class="card__body">
+              <ol class="numbered">
+                <li>Each detected incident is recorded with a timestamp and shown to your professor in real time.</li>
+                <li>You receive an on-screen alert for every recorded violation.</li>
+                <li>
+                  Reaching <strong class="danger"><span data-threshold>3</span> violations</strong> submits your
+                  examination automatically and locks all answers.
+                </li>
+                <li>Copy, paste, right-click and text selection are disabled inside the examination page.</li>
+                <li>Leaving the examination window is also recorded.</li>
+              </ol>
+            </div>
+          </section>
+
+          <section class="card">
+            <header class="card__header"><h2>Accessibility</h2></header>
+            <div class="card__body">
+              <p class="text-sm muted">
+                Every question can be read aloud using the built-in text-to-speech control. Reading speed can be
+                adjusted, and reading stops automatically when you move to another item.
+              </p>
+            </div>
+          </section>
+
+          <section class="card">
+            <header class="card__header"><h2>System requirements</h2></header>
+            <div class="card__body">
+              <ul class="bullets">
+                <li>A working webcam with camera permission granted.</li>
+                <li>Updated Chrome, Edge or Firefox browser.</li>
+                <li>Stable internet connection for the full duration.</li>
+                <li>Well-lit room with only the examinee present.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <section class="card mt-6">
+          <header class="card__header"><h2>Frequently asked questions</h2></header>
+          <div class="card__body faq">
+            <details open>
+              <summary>What happens if my camera disconnects mid-exam?</summary>
+              <p>
+                The proctoring panel shows a "No camera" notice. Restore the camera and refresh immediately; time
+                keeps running and prolonged absence is reported to your professor.
+              </p>
+            </details>
+            <details>
+              <summary>Does switching tabs really count as a violation?</summary>
+              <p>
+                Yes. Leaving the examination window — another tab, another app, or minimising the browser — is
+                recorded with a timestamp.
+              </p>
+            </details>
+            <details>
+              <summary>Can I still type my essay if pasting is blocked?</summary>
+              <p>
+                Typing is fully allowed. Only copy, cut and paste are blocked, and each attempt is logged as a
+                violation.
+              </p>
+            </details>
+            <details>
+              <summary>What happens after the third violation?</summary>
+              <p>
+                Your examination is submitted automatically, all answers are locked, and the violation report is
+                sent to your professor together with your answers.
+              </p>
+            </details>
+            <details>
+              <summary>When are results released?</summary>
+              <p>
+                Scores appear on the Results page once your professor releases them. Essay items are checked
+                manually, so they may take longer.
+              </p>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        EXAM SYSTEM · Intelligent Cheat Detection Web-Based Assessment System  · PLMUN      
+      </footer>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/student.js"></script>
+  </body>
+</html>

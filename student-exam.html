@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proctored Examination | EXAM SYSTEM </title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/exam.css" />
+  </head>
+  <body class="exam-body" data-role="student">
+    <header class="exam-header">
+      <div class="exam-header__inner">
+        <div class="brand">
+          <div class="brand__crest">PLMUN</div>
+          <div class="brand__text">
+            <p class="brand__name">EXAM SYSTEM</p>
+          </div>
+        </div>
+        <div class="exam-header__title">
+          <p id="examCode">IT 401 · Midterm Examination</p>
+          <p id="examSubject">Data Structure and Algorithm</p>
+        </div>
+        <div class="exam-header__right">
+          <div class="net" id="netStatus" title="Connection to the exam server" style="font-size:.8rem;display:flex;align-items:center;gap:.4rem">
+            <span id="netDot" style="width:.6rem;height:.6rem;border-radius:50%;background:#999;display:inline-block"></span>
+            <span id="netText">Checking…</span>
+          </div>
+          <div>
+            <p class="timer-label">Time remaining</p>
+            <p class="timer-value" id="timerValue">45:00</p>
+          </div>
+          <button type="button" class="btn btn--gold" id="submitBtn">Submit exam</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="toast-wrap" id="toastWrap"></div>
+
+    <div class="exam-layout">
+      <div>
+        <div class="navigator" id="navigator"></div>
+        <div id="questionHost"></div>
+      </div>
+
+      <aside class="proctor">
+        <div class="proctor__cam">
+          <header class="proctor__cam-head">
+            <h2>Proctoring Camera</h2>
+            <span class="cam-state">
+              <span class="cam-state__dot" id="camDot"></span>
+              <span id="camText">Starting</span>
+            </span>
+          </header>
+          <div class="proctor__video">
+            <video id="camVideo" autoplay playsinline muted></video>
+            <div class="proctor__frame"></div>
+            <p class="proctor__denied" id="camDenied" hidden>
+              Camera access is required to take this exam. Please allow camera permission and refresh.
+            </p>
+          </div>
+          <dl class="proctor__readouts">
+            <div><dt>Face angle</dt><dd id="rdAngle">—</dd></div>
+            <div><dt>Eye gaze</dt><dd id="rdGaze">—</dd></div>
+            <div><dt>Faces detected</dt><dd id="rdFaces">—</dd></div>
+            <div><dt>Detection model</dt><dd id="rdModel">Loading…</dd></div>
+          </dl>
+        </div>
+
+        <div class="proctor__violations">
+          <header><h2>Violation Status</h2></header>
+          <div class="proctor__violations-body">
+            <div class="violation-count">
+              <span class="text-sm muted">Recorded violations</span>
+              <strong id="violationCount">0 / 3</strong>
+            </div>
+            <div class="violation-pips" id="violationPips"></div>
+            <p class="text-xs muted" id="violationNote">
+              3 warnings remaining before automatic submission.
+            </p>
+            <ul class="violation-log" id="violationLog">
+              <li class="muted">No violations recorded.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="simulator" id="simulator" hidden>
+          <h3>Detection simulator (demo mode)</h3>
+          <p>Open with <code>?demo=1</code> to trigger flags manually when no camera is available.</p>
+          <div class="simulator__buttons">
+            <button type="button" data-simulate="face-angle" data-label="Face angle away from screen">
+              Face turned away
+            </button>
+            <button type="button" data-simulate="eye-gaze" data-label="Eye gaze off-screen">
+              Gaze off-screen
+            </button>
+            <button type="button" data-simulate="multiple-faces" data-label="Another person detected on camera">
+              Second person
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script src="js/api.js"></script>
+        <script src="js/common.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/detection.js"></script>
+    <script src="js/exam.js"></script>
+  </body>
+</html>

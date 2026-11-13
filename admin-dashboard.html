@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin | EXAM System PLMun</title>
+<script src="js/theme.js"></script>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/professor.css" />
+<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body data-role="admin">
+<div class="app">
+  <header class="site-header"><div class="site-header__inner">
+    <div class="brand"><div class="brand__crest">PLMUN</div><div class="brand__text"><p class="brand__name">EXAM SYSTEM</p><p class="brand__sub">Administration</p></div></div>
+    <nav class="nav">
+      <a href="admin-dashboard.html" class="is-active">Admin Console</a>
+      <a href="professor-dashboard.html">Exams</a>
+      <a href="professor-monitoring.html">Live Monitoring</a>
+      <a href="professor-exam-creation.html">Exam Builder</a>
+      <a href="professor-reports.html">Reports</a>
+    </nav>
+    <div class="user-box"><div><p class="user-box__name" data-user-name>Admin</p><p class="user-box__role">Administrator</p></div><a class="signout" href="index.html">Sign out</a></div>
+  </div></header>
+
+  <main class="main">
+    <div class="page-title"><h1>Admin Console</h1><p>Full access: accounts, sign-up approvals, departments and school years. Exams, monitoring and reports are in the menu above.</p></div>
+
+    <div class="tabs" id="tabs">
+      <button class="tab is-active" data-tab="accounts">Accounts</button>
+      <button class="tab" data-tab="approvals">Approvals <span class="tab__count" id="pendingCount" hidden>0</span></button>
+      <button class="tab" data-tab="departments">Departments</button>
+      <button class="tab" data-tab="schoolyear">School Year</button>
+    </div>
+
+    <!-- ACCOUNTS -->
+    <div id="tab-accounts">
+      <section class="card"><header class="card__header"><h2>New account</h2></header>
+        <div class="card__body">
+          <form id="userForm" class="form-grid">
+            <label class="field"><span class="field__label">Role</span><select class="select" id="uRole"><option>student</option><option>professor</option><option>admin</option></select></label>
+            <label class="field"><span class="field__label">Account number</span><input class="input" id="uAcct" maxlength="30" required /></label>
+            <label class="field"><span class="field__label">Full name</span><input class="input" id="uName" maxlength="120" required /></label>
+            <label class="field u-dept"><span class="field__label">Department</span><select class="select" id="uDept"></select></label>
+            <label class="field u-student"><span class="field__label">Course</span><select class="select" id="uProg"></select></label>
+            <label class="field u-student"><span class="field__label">Year level</span><select class="select" id="uYear"></select></label>
+            <label class="field u-student"><span class="field__label">Section (optional)</span><input class="input" id="uSection" maxlength="30" /></label>
+            <label class="field"><span class="field__label">PIN (min 6)</span><input class="input" id="uPass" type="password" autocomplete="new-password" required /></label>
+            <button class="btn btn--primary" type="submit">Create</button>
+          </form>
+          <p class="text-sm" id="uNote" style="min-height:1.25rem;margin-top:.5rem"></p>
+        </div></section>
+
+      <section class="card mt-6"><header class="card__header"><div class="row-between"><h2>All accounts</h2>
+        <div class="btn-row"><select class="select" id="fRole" style="width:auto"><option value="">All roles</option><option>student</option><option>professor</option><option>admin</option></select>
+        <select class="select" id="fDept" style="width:auto"></select>
+        <input class="input" id="fSearch" placeholder="Search name or number" style="width:14rem" /></div></div></header>
+        <div class="card__body"><div class="scroll-x"><table class="table"><thead><tr><th>Account</th><th>Name</th><th>Role</th><th>Department</th><th>Course</th><th>Year</th><th>Status</th><th></th></tr></thead><tbody id="userBody"></tbody></table></div></div></section>
+    </div>
+
+    <!-- APPROVALS -->
+    <div id="tab-approvals" hidden>
+      <section class="card"><header class="card__header"><h2>Sign-up requests</h2></header>
+        <div class="card__body"><p class="muted text-sm" style="margin-bottom:.75rem">Requests from the sign-up page. Requests with an account number that already exists are rejected automatically and never appear here.</p>
+        <div class="scroll-x"><table class="table"><thead><tr><th>Account</th><th>Name</th><th>Role</th><th>Department</th><th>Course</th><th>Year</th><th>Requested</th><th></th></tr></thead><tbody id="reqBody"></tbody></table></div>
+        <p class="muted text-sm" id="reqEmpty" style="margin-top:.75rem" hidden>No pending requests.</p></div></section>
+      <section class="card mt-6"><header class="card__header"><h2>Rejected requests</h2></header>
+        <div class="card__body"><div class="scroll-x"><table class="table"><thead><tr><th>Account</th><th>Name</th><th>Role</th><th>Department</th><th></th></tr></thead><tbody id="rejBody"></tbody></table></div>
+        <p class="muted text-sm" id="rejEmpty" style="margin-top:.75rem" hidden>None.</p></div></section>
+    </div>
+
+    <!-- DEPARTMENTS -->
+    <div id="tab-departments" hidden>
+      <section class="card"><header class="card__header"><h2>New department</h2></header>
+        <div class="card__body"><form id="deptForm" class="form-grid">
+          <label class="field"><span class="field__label">Code (e.g. CITCS)</span><input class="input" id="dCode" maxlength="20" required /></label>
+          <label class="field"><span class="field__label">Name</span><input class="input" id="dName" maxlength="150" required /></label>
+          <button class="btn btn--primary" type="submit">Add department</button></form>
+          <p class="text-sm" id="dNote" style="min-height:1.25rem;margin-top:.5rem"></p></div></section>
+      <div class="mt-6" id="deptList"></div>
+    </div>
+
+    <!-- SCHOOL YEAR -->
+    <div id="tab-schoolyear" hidden>
+      <section class="card"><header class="card__header"><h2>New school year</h2></header>
+        <div class="card__body"><form id="syForm" class="form-grid">
+          <label class="field"><span class="field__label">Label (2026-2027)</span><input class="input" id="syLabel" pattern="\d{4}-\d{4}" required /></label>
+          <label class="field"><span class="field__label">Start date</span><input class="input" id="syStart" type="date" required /></label>
+          <label class="field"><span class="field__label">End date</span><input class="input" id="syEnd" type="date" required /></label>
+          <button class="btn btn--primary" type="submit">Add school year</button></form>
+          <p class="text-sm" id="syNote" style="min-height:1.25rem;margin-top:.5rem"></p>
+          <p class="muted text-sm">When a school year's end date passes, every approved student moves up one year level automatically (once). Irregular students are not changed. Students already in the last year of their program are marked <b>Graduated</b>.</p></div></section>
+      <section class="card mt-6"><header class="card__header"><h2>School years</h2></header>
+        <div class="card__body"><div class="scroll-x"><table class="table"><thead><tr><th>School year</th><th>Start</th><th>End</th><th>Status</th><th></th></tr></thead><tbody id="syBody"></tbody></table></div></div></section>
+    </div>
+  </main>
+</div>
+
+<!-- Edit account -->
+<div class="modal" id="editModal" hidden>
+  <button class="modal__backdrop" type="button" data-modal-close="editModal" aria-label="Close"></button>
+  <div class="modal__panel" style="max-width:36rem">
+    <div class="modal__header"><h2>Edit account</h2><button class="modal__close" type="button" data-modal-close="editModal" aria-label="Close">&times;</button></div>
+    <form class="modal__body form-grid" id="editForm" style="grid-template-columns:1fr 1fr">
+      <label class="field"><span class="field__label">Role</span><select class="select" id="eRole"><option>student</option><option>professor</option><option>admin</option></select></label>
+      <label class="field"><span class="field__label">Account number</span><input class="input" id="eAcct" maxlength="30" required /></label>
+      <label class="field" style="grid-column:1/-1"><span class="field__label">Full name</span><input class="input" id="eName" maxlength="120" required /></label>
+      <label class="field e-dept"><span class="field__label">Department</span><select class="select" id="eDept"></select></label>
+      <label class="field e-student"><span class="field__label">Course</span><select class="select" id="eProg"></select></label>
+      <label class="field e-student"><span class="field__label">Year level</span><select class="select" id="eYear"></select></label>
+      <label class="field e-student"><span class="field__label">Section</span><input class="input" id="eSection" maxlength="30" /></label>
+      <label class="field e-student" style="grid-column:1/-1"><span><input type="checkbox" id="eGrad" /> Graduated</span></label>
+      <p class="text-sm danger" id="eNote" style="grid-column:1/-1;min-height:1.25rem;margin:0"></p>
+      <div class="btn-row" style="grid-column:1/-1"><button class="btn btn--primary" type="submit">Save changes</button><button class="btn btn--outline" type="button" data-modal-close="editModal">Cancel</button></div>
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

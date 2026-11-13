@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exam Creation | EXAM SYSTEM</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/professor.css">
+  </head>
+  <body data-role="professor,admin">
+    <div class="app">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="professor-dashboard.html">Dashboard</a>
+            <a href="professor-monitoring.html">Live Monitoring</a>
+            <a href="professor-exam-creation.html">Exam Builder</a>
+            <a href="professor-reports.html">Reports</a>
+          </nav>
+          <div class="user-box">
+            <div>
+              <p class="user-box__name" data-user-name>Prof. R. Dela Cruz</p>
+              <p class="user-box__role">Professor</p>
+            </div>
+            <a class="signout" href="index.html">Sign out</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-title">
+          <h1>Exam Builder</h1>
+          <p>Create, configure and publish assessments. Everything is saved to the database.</p>
+        </div>
+
+        <div class="grid grid--builder">
+          <section class="card">
+            <header class="card__header">
+              <h2>My examinations</h2>
+              <button type="button" class="btn btn--primary" data-modal-open="examModal">New examination</button>
+            </header>
+            <div class="card__body">
+              <ul class="divided" id="examManagerList"></ul>
+            </div>
+          </section>
+
+          <section class="card">
+            <header class="card__header"><h2>Proctoring rules</h2></header>
+            <div class="card__body">
+              <ul class="text-sm" style="display: grid; gap: 0.75rem">
+                <li class="row-between"><span>Require camera before starting</span><input type="checkbox" id="ruleCamera" checked /></li>
+                <li class="row-between"><span>Detect face angle away from screen</span><input type="checkbox" id="ruleAngle" checked /></li>
+                <li class="row-between"><span>Detect eye gaze off-screen</span><input type="checkbox" id="ruleGaze" checked /></li>
+                <li class="row-between"><span>Detect additional person on camera</span><input type="checkbox" id="ruleMulti" checked /></li>
+                <li class="row-between"><span>Block copy, paste and right-click</span><input type="checkbox" id="ruleCopy" checked /></li>
+                <li class="row-between"><span>Record leaving the exam window</span><input type="checkbox" id="ruleTab" checked /></li>
+              </ul>
+              <label class="field" style="margin-top: 1rem">
+                <span class="field__label">Violation threshold (auto-submit)</span>
+                <input class="input" type="number" id="thresholdInput" value="3" min="1" max="20" />
+              </label>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        EXAM SYSTEM · Intelligent Cheat Detection Web-Based Assessment System  · PLMUN
+      </footer>
+    </div>
+
+    <div class="modal" id="examModal" hidden>
+      <button class="modal__backdrop" type="button" data-modal-close="examModal" aria-label="Close"></button>
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-label="New examination">
+        <div class="modal__header">
+          <h2>New examination</h2>
+          <button class="modal__close" type="button" data-modal-close="examModal" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal__body">
+          <form id="examBuilderForm" style="display: grid; gap: 1.25rem">
+            <div class="grid" style="grid-template-columns: 1fr 1fr">
+              <label class="field"><span class="field__label">Title</span>
+                <input class="input" id="fTitle" placeholder="Midterm Examination" required /></label>
+              <label class="field"><span class="field__label">Subject code</span>
+                <input class="input" id="fCode" placeholder="IT 401" required /></label>
+              <label class="field"><span class="field__label">Subject name</span>
+                <input class="input" id="fSubject" placeholder="Data Analytics and Visualization" /></label>
+              <label class="field"><span class="field__label">Schedule</span>
+                <input class="input" id="fSchedule" type="datetime-local" /></label>
+              <label class="field"><span class="field__label">Duration (minutes)</span>
+                <input class="input" id="fDuration" type="number" value="45" min="1" /></label>
+            </div>
+
+            <fieldset class="fieldset">
+              <legend class="field__label">Sections allowed to take this exam</legend>
+              <div id="newExamSections"></div>
+            </fieldset>
+
+            <fieldset style="border:1px solid var(--border,#ddd);padding:1rem;border-radius:8px;display:grid;gap:.75rem">
+              <legend class="field__label">Add a question</legend>
+              <div class="grid" style="grid-template-columns: 2fr 1fr">
+                <label class="field"><span class="field__label">Type</span>
+                  <select class="select" id="qType"><option value="multiple-choice">Multiple choice (auto-graded)</option><option value="essay">Essay (manual grading)</option></select></label>
+                <label class="field"><span class="field__label">Points</span>
+                  <input class="input" id="qPoints" type="number" value="5" min="1" /></label>
+              </div>
+              <label class="field"><span class="field__label">Question prompt</span>
+                <textarea class="textarea" id="qPrompt" rows="3" placeholder="Type the question here…"></textarea></label>
+              <div id="qChoices" style="display:grid;gap:.5rem">
+                <span class="field__label">Choices - select the correct one</span>
+                <label style="display:flex;gap:.5rem;align-items:center"><input type="radio" name="qCorrect" value="0" checked /><input class="input" data-choice placeholder="Choice A" /></label>
+                <label style="display:flex;gap:.5rem;align-items:center"><input type="radio" name="qCorrect" value="1" /><input class="input" data-choice placeholder="Choice B" /></label>
+                <label style="display:flex;gap:.5rem;align-items:center"><input type="radio" name="qCorrect" value="2" /><input class="input" data-choice placeholder="Choice C" /></label>
+                <label style="display:flex;gap:.5rem;align-items:center"><input type="radio" name="qCorrect" value="3" /><input class="input" data-choice placeholder="Choice D" /></label>
+              </div>
+              <div class="grid" style="grid-template-columns: 1fr 2fr">
+                <label class="field"><span class="field__label">Media (optional)</span>
+                  <select class="select" id="qMediaKind"><option value="">None</option><option value="image">Picture URL</option><option value="video">Video URL</option></select></label>
+                <label class="field"><span class="field__label">Media link</span>
+                  <input class="input" id="qMediaSrc" placeholder="assets/diagram.png or https://…" /></label>
+              </div>
+              <div><button type="submit" class="btn btn--outline">Add question to exam</button></div>
+            </fieldset>
+
+            <div>
+              <span class="field__label">Questions in this exam (<span id="qCount">0</span>)</span>
+              <ol id="qList" class="text-sm" style="margin:.5rem 0 0 1.25rem;display:grid;gap:.35rem"></ol>
+            </div>
+
+            <div class="btn-row">
+              <button type="button" class="btn btn--primary" id="btnPublish">Publish exam</button>
+              <button type="button" class="btn btn--outline" id="btnDraft">Save as draft</button>
+            </div>
+            <p class="text-sm muted" id="builderNote" hidden></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="sectionsModal" hidden>
+      <button class="modal__backdrop" type="button" data-modal-close="sectionsModal" aria-label="Close"></button>
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Sections allowed" style="max-width:30rem">
+        <div class="modal__header">
+          <h2>Sections allowed</h2>
+          <button class="modal__close" type="button" data-modal-close="sectionsModal" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal__body" style="display:grid;gap:1rem">
+          <p class="text-sm muted" id="editSectionsTitle"></p>
+          <div id="editSectionsBox"></div>
+          <p class="text-sm danger" id="editSectionsNote" hidden></p>
+          <div class="btn-row">
+            <button type="button" class="btn btn--primary" id="btnSaveSections">Save sections</button>
+            <button type="button" class="btn btn--outline" data-modal-close="sectionsModal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    
+    <script src="js/common.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/professor.js"></script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Examinations | EXAM SYSTEM </title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/student.css">
+  </head>
+  <body data-role="student">
+    <div class="app">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="student-dashboard.html">Dashboard</a>
+            <a href="student-exam-dashboard.html">My Exams</a>
+            <a href="student-results.html">Results</a>
+            <a href="student-guidelines.html">Guidelines</a>
+          </nav>
+          <div class="user-box">
+            <div>
+              <p class="user-box__name" data-user-name>Althea Castillo</p>
+              <p class="user-box__role">Student</p>
+            </div>
+            <a class="signout" href="index.html">Sign out</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-title">
+          <h1>My Examinations</h1>
+          <p>First Semester, A.Y. 2026-2027</p>
+        </div>
+
+        <div class="chip-row" style="margin-bottom: 1.5rem">
+          <button type="button" class="chip is-active" data-filter="all">All</button>
+          <button type="button" class="chip" data-filter="available">Available</button>
+          <button type="button" class="chip" data-filter="scheduled">Scheduled</button>
+          <button type="button" class="chip" data-filter="completed">Completed</button>
+        </div>
+
+        <div class="grid grid--cards" id="examGrid"></div>
+      </main>
+
+      <footer class="site-footer">
+        EXAM SYSTEM · Intelligent Cheat Detection Web-Based Assessment System  · PLMUN
+    </div>
+
+    <script src="js/api.js"></script>
+    
+    <script src="js/common.js"></script>
+    <script src="js/student.js"></script>
+  </body>
+</html>

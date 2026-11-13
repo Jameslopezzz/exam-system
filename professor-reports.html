@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integrity Reports | EXAM SYSTEM</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/professor.css">
+  </head>
+  <body data-role="professor,admin">
+    <div class="app">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="professor-dashboard.html">Dashboard</a>
+            <a href="professor-monitoring.html">Live Monitoring</a>
+            <a href="professor-exam-creation.html">Exam Builder</a>
+            <a href="professor-reports.html">Reports</a>
+          </nav>
+          <div class="user-box">
+            <div>
+              <p class="user-box__name" data-user-name>Prof. R. Dela Cruz</p>
+              <p class="user-box__role">Professor</p>
+            </div>
+            <a class="signout" href="index.html">Sign out</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-title">
+          <h1>Reports</h1>
+          <p id="reportSubtitle">Summary and integrity records</p>
+          <div class="btn-row" style="margin-top:.75rem;flex-wrap:wrap">
+            <select class="select" id="reportExam" aria-label="Choose examination"></select>
+            <a class="btn btn--primary" id="exportScores" href="#">Export scores (CSV)</a>
+            <a class="btn btn--outline" id="exportViolations" href="#">Export violation log (CSV)</a>
+          </div>
+        </div>
+
+        <div class="grid grid--stats">
+          <div class="stat">
+            <p class="stat__label">Class average</p>
+            <p class="stat__value" id="statAvg">—</p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Passing rate</p>
+            <p class="stat__value is-success" id="statPass">—</p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Lowest score</p>
+            <p class="stat__value is-danger" id="statLow">—</p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Total violations</p>
+            <p class="stat__value is-danger" id="statViol">—</p>
+          </div>
+        </div>
+
+        <div class="grid grid--halves mt-8">
+          <section class="card">
+            <header class="card__header"><h2>Violations per category</h2></header>
+            <div class="card__body" id="violationPie"></div>
+          </section>
+          <section class="card">
+            <header class="card__header"><h2>Score distribution</h2></header>
+            <div class="card__body" id="scoreBars"></div>
+          </section>
+        </div>
+
+        <section class="card mt-6">
+          <header class="card__header"><h2>Per-student record</h2></header>
+          <div class="card__body">
+            <div class="scroll-x">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Section</th>
+                    <th>Progress</th>
+                    <th>Violations</th>
+                    <th>Last flag</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="reportBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        EXAM SYSTEM · Intelligent Cheat Detection Web-Based Assessment System  · PLMUN
+      </footer>
+    </div>
+
+    <script src="js/api.js"></script>
+    
+    <script src="js/common.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/professor.js"></script>
+  </body>
+</html>

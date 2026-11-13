@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Profile | EXAM SYSTEM</title>
+    <meta name="description" content="Your account information, examinations and preferences." />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+  </head>
+  <!-- One page for every role: the menu, the exam section and the stats are chosen from the signed-in account. -->
+  <body data-role="student,professor,admin">
+    <div class="app">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+          <nav class="nav" data-auto-nav></nav>
+          <div class="user-box"></div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-title">
+          <h1>My Profile</h1>
+          <p id="profileSubtitle">Your account, examinations and preferences.</p>
+        </div>
+
+        <section class="card profile-hero" aria-label="Account summary">
+          <div class="avatar avatar--lg" id="heroAvatar" aria-hidden="true">?</div>
+          <div class="profile-hero__text">
+            <h2 id="heroName">Loading…</h2>
+            <p class="muted" id="heroMeta"></p>
+            <p class="profile-hero__badges" id="heroBadges"></p>
+          </div>
+          <div class="profile-hero__actions">
+            <button type="button" class="btn btn--danger" data-signout>Sign out</button>
+          </div>
+        </section>
+
+        <p class="text-sm danger" id="profileError" role="alert" hidden></p>
+
+        <div class="profile-layout">
+          <div class="profile-side">
+            <section class="card">
+              <header class="card__header"><h2>Account information</h2></header>
+              <div class="card__body"><dl class="kv" id="accountInfo"></dl></div>
+            </section>
+
+            <section class="card">
+              <header class="card__header"><h2>Appearance</h2></header>
+              <div class="card__body">
+                <button type="button" class="pref-row" data-theme-toggle aria-pressed="false">
+                  <span><span class="pref-row__title">Dark mode</span><span class="pref-row__hint">Easier on the eyes in low light. Saved on this device.</span></span>
+                  <span class="switch" aria-hidden="true"></span>
+                </button>
+              </div>
+            </section>
+
+            <section class="card">
+              <header class="card__header"><h2>Change PIN</h2></header>
+              <div class="card__body">
+                <form id="pinForm" class="pin-form" autocomplete="off">
+                  <label class="field"><span class="field__label">Current PIN</span>
+                    <input class="input" id="pinCurrent" type="password" autocomplete="current-password" required /></label>
+                  <label class="field"><span class="field__label">New PIN (min 6)</span>
+                    <input class="input" id="pinNew" type="password" autocomplete="new-password" minlength="6" required /></label>
+                  <label class="field"><span class="field__label">Confirm new PIN</span>
+                    <input class="input" id="pinConfirm" type="password" autocomplete="new-password" minlength="6" required /></label>
+                  <p class="text-sm" id="pinMsg" role="status" style="min-height:1.25rem"></p>
+                  <button type="submit" class="btn btn--primary" id="pinBtn">Update PIN</button>
+                </form>
+              </div>
+            </section>
+          </div>
+
+          <div class="profile-main" id="profileMain">
+            <section class="card"><div class="card__body muted text-sm">Loading your information…</div></section>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        EXAM SYSTEM · Intelligent Cheat Detection Web-Based Assessment System  · PLMUN
+      </footer>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+  </body>
+</html>

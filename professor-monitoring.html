@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Monitoring | EXAM SYSTEM</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/professor.css">
+  </head>
+  <body data-role="professor,admin">
+    <div class="app">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand">
+            <div class="brand__crest">PLMUN</div>
+            <div class="brand__text">
+              <p class="brand__name">EXAM SYSTEM</p>
+              <p class="brand__sub">Pamantasan ng Lungsod ng Muntinlupa</p>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="professor-dashboard.html">Dashboard</a>
+            <a href="professor-monitoring.html">Live Monitoring</a>
+            <a href="professor-exam-creation.html">Exam Builder</a>
+            <a href="professor-reports.html">Reports</a>
+          </nav>
+          <div class="user-box">
+            <div>
+              <p class="user-box__name" data-user-name>Prof. R. Dela Cruz</p>
+              <p class="user-box__role">Professor</p>
+            </div>
+            <a class="signout" href="index.html">Sign out</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page-title">
+          <h1>Live Monitoring</h1>
+          <p id="monitorSubtitle">Loading examination…</p>
+        </div>
+
+        <div class="grid grid--monitor">
+          <div>
+            <div class="monitor-toolbar">
+              <label class="sr-only" for="monitorExam">Examination</label>
+              <select class="select" id="monitorExam"><option value="">Loading…</option></select>
+              <label class="sr-only" for="monitorSearch">Search examinees</label>
+              <input class="input" id="monitorSearch" type="search" placeholder="Search name, number or section" />
+              <label class="sr-only" for="monitorStatus">Filter by status</label>
+              <select class="select" id="monitorStatus">
+                <option value="all">All statuses</option>
+                <option value="in-progress">In progress</option>
+                <option value="flagged">Flagged</option>
+                <option value="auto-submitted">Auto-submitted</option>
+                <option value="submitted">Submitted</option>
+              </select>
+            </div>
+
+            <div class="monitor-grid" id="monitorGrid"></div>
+          </div>
+
+          <div>
+            <section class="card">
+              <header class="card__header"><h2>Selected examinee</h2></header>
+              <div class="card__body">
+                <p class="font-display" style="font-size: 1.125rem; font-weight: 700" id="detailName"></p>
+                <p class="text-xs muted" id="detailMeta"></p>
+                <dl class="detail-list">
+                  <div><dt>Progress</dt><dd id="detailProgress"></dd></div>
+                  <div><dt>Violations</dt><dd class="danger" id="detailViolations"></dd></div>
+                  <div><dt>Last flag</dt><dd id="detailFlag"></dd></div>
+                </dl>
+                <div class="stack-actions">
+                  <button type="button" class="btn btn--primary">Send warning</button>
+                  <button type="button" class="btn btn--danger">Force submit</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="card mt-6">
+              <header class="card__header"><h2>Alert feed</h2></header>
+              <div class="card__body">
+                <ul id="monitorAlerts"></ul>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        EXAM SYSTEM · Intelligent Cheat Detection Web-Based Assessment System  · PLMUN
+      </footer>
+    </div>
+
+    <div class="modal" id="studentModal" hidden>
+      <button class="modal__backdrop" type="button" data-modal-close="studentModal" aria-label="Close"></button>
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Examinee detail">
+        <div class="modal__header">
+          <h2>Examinee detail</h2>
+          <button class="modal__close" type="button" data-modal-close="studentModal" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal__body" id="studentModalBody"></div>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    
+    <script src="js/common.js"></script>
+    <script src="js/monitoring.js"></script>
+  </body>
+</html>
