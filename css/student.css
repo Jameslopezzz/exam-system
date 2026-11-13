@@ -1,0 +1,85 @@
+/* ---------- Exam cards (student-exams) ---------- */
+.exam-card__code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold-text);
+}
+
+.exam-card h3 {
+  margin-top: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.exam-card__meta {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.exam-card__meta > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.exam-card__meta dd {
+  margin: 0;
+  color: var(--foreground);
+}
+
+.exam-card__action {
+  margin-top: 1.25rem;
+}
+
+.exam-card__status {
+  margin-top: 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-foreground);
+}
+
+/* ---------- FAQ accordion ---------- */
+.faq details {
+  border-top: 1px solid var(--border);
+  padding: 0.85rem 0;
+}
+.faq details:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.1rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+.faq details[open] summary::before {
+  content: "–";
+}
+.faq p {
+  margin-top: 0.5rem;
+  padding-left: 1.1rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}

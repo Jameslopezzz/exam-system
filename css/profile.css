@@ -1,0 +1,176 @@
+/* =========================================================
+   Profile page (all roles)
+   ========================================================= */
+
+.profile-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.profile-hero__text {
+  min-width: 14rem;
+  flex: 1;
+}
+.profile-hero__text h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.profile-hero__text p {
+  margin-top: 0.15rem;
+  font-size: 0.875rem;
+}
+.profile-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem !important;
+}
+.profile-hero .avatar--lg {
+  border: 3px solid var(--gold);
+  background: var(--header-bg);
+  color: var(--gold);
+}
+
+.profile-layout {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .profile-layout {
+    grid-template-columns: 22rem 1fr;
+  }
+}
+.profile-side,
+.profile-main {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* label / value rows */
+.kv {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  font-size: 0.875rem;
+}
+.kv > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.65rem;
+}
+.kv > div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.kv dt {
+  color: var(--muted-foreground);
+}
+.kv dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.kv dd small {
+  display: block;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+/* dark-mode row */
+.pref-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+}
+.pref-row__title {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.pref-row__hint {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+}
+
+.pin-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+/* stat tiles that act as filters */
+.stat--link {
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+.stat--link:hover {
+  border-color: var(--ring);
+}
+
+/* exam list */
+.profile-exam {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+.profile-exam__main {
+  min-width: 14rem;
+  flex: 1 1 16rem;
+}
+.profile-exam__title {
+  font-weight: 600;
+}
+.profile-exam__title .badge {
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+.profile-exam__meta {
+  margin-top: 0.2rem;
+}
+.profile-exam__side {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.score-pill {
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.empty {
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border);
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.profile-main .card .table {
+  min-width: 28rem;
+}
